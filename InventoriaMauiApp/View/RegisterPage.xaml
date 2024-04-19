@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Text="Inventoria" FontSize="24" HorizontalTextAlignment="Center" TextColor="#333333" FontAttributes="Bold"/>
-            <Label Grid.Row="1" Text="Til datacentre" FontSize="18" TextColor="#63909c" HorizontalTextAlignment="Center" Margin="0,5"/>
+            <Label Grid.Row="1" Text="Registrer datacenter bruger" FontSize="18" TextColor="#63909c" HorizontalTextAlignment="Center" Margin="0,5"/>
 
             <Label Grid.Row="2" Text="Arbejds email" FontSize="16" FontAttributes="Bold" TextColor="#444444"/>
             <Entry Grid.Row="3" Text="{Binding StudieEmail}" BackgroundColor="#ffffff" TextColor="#578794" HeightRequest="50" Margin="0,5"/>
@@ -47,7 +47,7 @@
             <Entry Grid.Row="5" Text="{Binding Username}" BackgroundColor="#ffffff" TextColor="#578794" HeightRequest="50" Margin="0,5"/>
 
             <Label Grid.Row="6" Text="Firma" FontSize="16" FontAttributes="Bold" TextColor="#444444"/>
-            <Picker Grid.Row="7" Title="Vælg et firma"
+            <Picker Grid.Row="7" Title="Vælg et firma" BackgroundColor="#ffffff"
                     ItemsSource="{Binding Companies}"
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding SelectedCompany}" HeightRequest="50" Margin="0,5"/>

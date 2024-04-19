@@ -61,6 +61,9 @@ namespace InventoriaMauiApp
             services.AddHttpClient<ICompanyService, CompanyService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
+            services.AddHttpClient<IDataRackService, DataRackService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
         }
         private static void RegisterViewModels(IServiceCollection services)
         {
