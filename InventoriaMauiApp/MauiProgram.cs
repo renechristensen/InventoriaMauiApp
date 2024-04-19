@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Polly.Extensions.Http;
 using Polly;
 using InventoriaMauiApp.ViewModels;
+using InventoriaMauiApp.views;
 
 namespace InventoriaMauiApp
 {
@@ -14,6 +15,9 @@ namespace InventoriaMauiApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            // set up the various services, pages and viewmodels as transients
+            ConfigureServices(builder.Services);
+            // set up the
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()

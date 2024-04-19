@@ -4,7 +4,7 @@
              xmlns:model="clr-namespace:InventoriaMauiApp.Models"
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:DataType="viewmodel:UserLoginViewModel"
-             x:Class="InventoriaMauiApp.LoginPage"
+             x:Class="InventoriaMauiApp.views.LoginPage"
              Title="Log ind">
     <ScrollView>
         <Grid RowDefinitions="Auto,*">
