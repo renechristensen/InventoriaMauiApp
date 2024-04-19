@@ -11,7 +11,7 @@ namespace InventoriaMauiApp
     public static class MauiProgram
     {
         // ngrok url, remember to replace it with new ones
-        public static string baseUrl = "https://deep-wealthy-roughy.ngrok-free.app";
+        public static string baseUrl = "https://c989-91-101-203-112.ngrok-free.app";
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -57,12 +57,17 @@ namespace InventoriaMauiApp
             services.AddHttpClient<IUserService, UserService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
+            
+            services.AddHttpClient<ICompanyService, CompanyService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
         }
         private static void RegisterViewModels(IServiceCollection services)
         {
             var viewModels = new List<Type>
             {
-                typeof(UserLoginViewModel)
+                typeof(UserLoginViewModel),
+                typeof(UserRegisterViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
