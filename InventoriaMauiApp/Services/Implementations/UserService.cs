@@ -45,7 +45,7 @@ namespace InventoriaMauiApp.Services
             var jsonPayload = JsonConvert.SerializeObject(userToRegister);
             StringContent message = new(jsonPayload, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await ExecuteHttpRequestAsyncWithoutAuthorization(() => _httpClient.PostAsync(RegisterEndpoint, message));
+            HttpResponseMessage response = await ExecuteHttpRequestAsyncWithoutAuthorization(() => _httpClient.PostAsync(RegisterEndpoint + "CreateUser", message));
 
             if (response.IsSuccessStatusCode)
             {

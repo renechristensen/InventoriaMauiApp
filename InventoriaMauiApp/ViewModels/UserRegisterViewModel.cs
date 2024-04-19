@@ -15,14 +15,38 @@ namespace InventoriaMauiApp.ViewModels
         private string _gentagPassword;
         private string _studieEmail;
         private int _companyID;
+        private List<Company> _companies;
+        private Company _selectedCompany;
+
         private readonly IUserService _userService;
+        private readonly ICompanyService _companyService;
 
         public ICommand RegisterCommand { get; }
 
-        public UserRegisterViewModel(IUserService userService)
+        public UserRegisterViewModel(IUserService userService, ICompanyService companyService)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             RegisterCommand = new Command(async () => await OnRegisterClicked());
+            _companyService = companyService;
+            LoadCompanies();
+        }
+
+        public List<Company> Companies
+        {
+            get => _companies;
+            set => Set(ref _companies, value);
+        }
+
+        public Company SelectedCompany
+        {
+            get => _selectedCompany;
+            set
+            {
+                if (Set(ref _selectedCompany, value))
+                {
+                    CompanyID = _selectedCompany?.CompanyID ?? 0;
+                }
+            }
         }
 
         public string Username
@@ -52,6 +76,10 @@ namespace InventoriaMauiApp.ViewModels
             set => Set(ref _gentagPassword, value);
         }
 
+        private async void LoadCompanies()
+        {
+            Companies = await _companyService.GetAllCompaniesAsync();
+        }
         private async Task OnRegisterClicked()
         {
             if (string.IsNullOrWhiteSpace(Username) ||
@@ -90,7 +118,10 @@ namespace InventoriaMauiApp.ViewModels
 
             var newUser = new User
             {
-                Displayname = Username
+                Displayname = Username,
+                StudieEmail = StudieEmail,
+                CompanyID = CompanyID,
+                Password = Password
             };
 
             try
