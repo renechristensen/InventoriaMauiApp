@@ -3,6 +3,7 @@ using InventoriaMauiApp.Services;
 using Microsoft.Extensions.Logging;
 using Polly.Extensions.Http;
 using Polly;
+using InventoriaMauiApp.ViewModels;
 
 namespace InventoriaMauiApp
 {
@@ -49,15 +50,15 @@ namespace InventoriaMauiApp
                 client.Timeout = TimeSpan.FromSeconds(30);
             });
 
-            //services.AddHttpClient<IUserService, UserService>(httpClientConfig)
-            //        .SetHandlerLifetime(TimeSpan.FromMinutes(5))
-            //        .AddPolicyHandler(retryPolicy);
+            services.AddHttpClient<IUserService, UserService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
         }
         private static void RegisterViewModels(IServiceCollection services)
         {
             var viewModels = new List<Type>
             {
-                //typeof(UserLoginViewModel)
+                typeof(UserLoginViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
@@ -67,7 +68,7 @@ namespace InventoriaMauiApp
         {
             var pages = new List<Type>
             {
-                //typeof(LoginPage)
+                typeof(LoginPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));
