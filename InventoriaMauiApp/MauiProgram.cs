@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Polly.Extensions.Http;
 using Polly;
 using InventoriaMauiApp.ViewModels;
-using InventoriaMauiApp.views;
+using InventoriaMauiApp.Views;
 
 namespace InventoriaMauiApp
 {
@@ -77,7 +77,8 @@ namespace InventoriaMauiApp
         {
             var pages = new List<Type>
             {
-                typeof(LoginPage)
+                typeof(LoginPage),
+                typeof(RegisterPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));
@@ -90,6 +91,5 @@ namespace InventoriaMauiApp
                 .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
                 .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
-
     }
 }

@@ -3,13 +3,23 @@
     x:Class="InventoriaMauiApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:InventoriaMauiApp.views"
+    xmlns:local="clr-namespace:InventoriaMauiApp.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="InventoriaMauiApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
-
+    <TabBar Title="LoginAndRegister">
+        <Tab Title="Log ind">
+            <ShellContent
+            Title="Log ind"
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            Route="LoginPage" />
+        </Tab>
+        <Tab Title="Registrering">
+            <ShellContent
+                Title="Registrer ny bruger"
+                ContentTemplate="{DataTemplate local:RegisterPage}"
+                Route="RegisterPage" />
+        </Tab>
+    </TabBar>
+    
 </Shell>
