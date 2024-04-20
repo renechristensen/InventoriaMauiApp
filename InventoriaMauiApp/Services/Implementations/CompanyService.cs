@@ -24,7 +24,7 @@ namespace InventoriaMauiApp.Services
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Company>>(jsonResponse);
+                return JsonConvert.DeserializeObject<List<Company>>(jsonResponse) ?? new();
             }
             else
             {

@@ -33,6 +33,6 @@ namespace InventoriaMauiApp.Models
         [JsonProperty("Roles")]
         public List<string> Roles { get; set; } = new List<string>();
         [JsonProperty("Password")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
     }
 }

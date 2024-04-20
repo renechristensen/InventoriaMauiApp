@@ -24,7 +24,7 @@ namespace InventoriaMauiApp.Services
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<DataRack>>(jsonResponse);
+                return JsonConvert.DeserializeObject<List<DataRack>>(jsonResponse) ?? new();
             }
             else
             {
@@ -39,7 +39,7 @@ namespace InventoriaMauiApp.Services
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<DataRack>(jsonResponse);
+                return JsonConvert.DeserializeObject<DataRack>(jsonResponse) ?? new DataRack();
             }
             else
             {

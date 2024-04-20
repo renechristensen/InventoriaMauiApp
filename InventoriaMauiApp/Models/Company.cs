@@ -9,9 +9,9 @@ namespace InventoriaMauiApp.Models
         public int CompanyID { get; set; }
 
         [JsonProperty("Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonProperty("Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

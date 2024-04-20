@@ -10,8 +10,8 @@ namespace InventoriaMauiApp.ViewModels
 {
     public class UserLoginViewModel : ViewModelBase
     {
-        private string _email;
-        private string _password;
+        private string _email = string.Empty;
+        private string _password = string.Empty;
         private readonly IUserService _userService;
 
         public ICommand LoginCommand { get; }
@@ -48,13 +48,13 @@ namespace InventoriaMauiApp.ViewModels
                 var jsonString = await _userService.LoginAsync(Email, Password);
                 var deserializedObject = JsonSerializer.Deserialize<Root>(jsonString);
 
-                string token = deserializedObject.Token;
-                User user = deserializedObject.User;
+                string? token = deserializedObject?.Token;
+                User? user = deserializedObject?.User;
 
                 if (!string.IsNullOrEmpty(token))
                 {
                     await SecureStorage.SetAsync("auth_token", token);
-                    await SecureStorage.SetAsync("user_id", user.UserID.ToString());
+                    await SecureStorage.SetAsync("user_id", user?.UserID.ToString() ?? "0");
                     await Shell.Current.GoToAsync("//DataRackOverview");
                 }
                 else
@@ -72,10 +72,10 @@ namespace InventoriaMauiApp.ViewModels
         private class Root
         {
             [JsonPropertyName("login")]
-            public User User { get; set; }
+            public User? User { get; set; }
 
             [JsonPropertyName("token")]
-            public string Token { get; set; }
+            public string? Token { get; set; }
         }
     }
 }

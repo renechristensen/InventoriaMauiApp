@@ -11,13 +11,13 @@ namespace InventoriaMauiApp.ViewModels
 {
     public class UserRegisterViewModel : ViewModelBase
     {
-        private string _username;
-        private string _password;
-        private string _gentagPassword;
-        private string _studieEmail;
+        private string _username = string.Empty;
+        private string _password = string.Empty;
+        private string _gentagPassword =string.Empty;
+        private string _studieEmail = string.Empty;
         private int _companyID;
-        private List<Company> _companies;
-        private Company _selectedCompany;
+        private List<Company> _companies = new();
+        private Company _selectedCompany = new();
 
         private readonly IUserService _userService;
         private readonly ICompanyService _companyService;
@@ -85,13 +85,19 @@ namespace InventoriaMauiApp.ViewModels
                 if (Companies.Count == 0)
                 {
                     // No companies to display, inform the user
-                    await Application.Current.MainPage.DisplayAlert("Notice", "No companies are currently available.", "OK");
+                    if (Application.Current != null && Application.Current.MainPage != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Notice", "No companies are currently available.", "OK");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 // Inform the user of the error
-                await Application.Current.MainPage.DisplayAlert("Error", "Unable to load company data. Please try again later.", "OK");
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Unable to load company data. Please try again later.", "OK");
+                }
                 Debug.WriteLine($"Failed to load companies: {ex.Message}");
                 Companies = new List<Company>(); // Ensure the list is initialized to avoid null reference issues
             }
@@ -102,7 +108,10 @@ namespace InventoriaMauiApp.ViewModels
             if (string.IsNullOrWhiteSpace(Username) ||
                 string.IsNullOrWhiteSpace(StudieEmail))
             {
-                await Application.Current.MainPage.DisplayAlert("Validation Error", "All fields are required.", "OK");
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Validation Error", "All fields are required.", "OK");
+                }
                 return;
             }
 
@@ -116,20 +125,29 @@ namespace InventoriaMauiApp.ViewModels
                   hasMinimum8Chars.IsMatch(Password) &&
                   hasLowerChar.IsMatch(Password)))
             {
-                await Application.Current.MainPage.DisplayAlert("Validation Error", "Password should be a minimum of 8 characters, contain at least one uppercase letter, one lowercase letter, and one number.", "OK");
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Validation Error", "Password should be a minimum of 8 characters, contain at least one uppercase letter, one lowercase letter, and one number.", "OK");
+                }
                 return;
             }
 
             if (Password != GentagPassword)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Passwords do not match.", "OK");
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Passwords do not match.", "OK");
+                }
                 return;
             }
 
             var emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
             if (!Regex.IsMatch(StudieEmail, emailPattern))
             {
-                await Application.Current.MainPage.DisplayAlert("Validation Error", "Please provide a valid email address.", "OK");
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Validation Error", "Please provide a valid email address.", "OK");
+                }
                 return;
             }
 
@@ -150,13 +168,19 @@ namespace InventoriaMauiApp.ViewModels
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Registration Failed", responseMessage, "OK");
+                    if (Application.Current != null && Application.Current.MainPage != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Registration Failed", responseMessage, "OK");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occurred during registration: " + ex.Message, "OK");
-            }
+                if (Application.Current != null && Application.Current.MainPage != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred during registration: " + ex.Message, "OK");
+                }
+             }
         }
     }
 }

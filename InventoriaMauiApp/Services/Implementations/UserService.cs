@@ -66,7 +66,7 @@ namespace InventoriaMauiApp.Services
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                User getUser = JsonConvert.DeserializeObject<User>(jsonResponse);
+                User getUser = JsonConvert.DeserializeObject<User>(jsonResponse) ?? new User();
                 return getUser;
             }
             else
