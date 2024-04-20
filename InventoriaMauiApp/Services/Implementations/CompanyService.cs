@@ -19,7 +19,7 @@ namespace InventoriaMauiApp.Services
 
         public async Task<List<Company>> GetAllCompaniesAsync()
         {
-            HttpResponseMessage response = await ExecuteHttpRequestAsync(() => _httpClient.GetAsync(CompanyEndpoint));
+            HttpResponseMessage response = await ExecuteHttpRequestAsyncWithoutAuthorization(() => _httpClient.GetAsync(CompanyEndpoint));
 
             if (response.IsSuccessStatusCode)
             {

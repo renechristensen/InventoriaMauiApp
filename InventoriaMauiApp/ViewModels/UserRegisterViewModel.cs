@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using InventoriaMauiApp.Models;
+using System.Diagnostics;
 
 namespace InventoriaMauiApp.ViewModels
 {
@@ -78,8 +79,24 @@ namespace InventoriaMauiApp.ViewModels
 
         private async void LoadCompanies()
         {
-            Companies = await _companyService.GetAllCompaniesAsync();
+            try
+            {
+                Companies = await _companyService.GetAllCompaniesAsync();
+                if (Companies.Count == 0)
+                {
+                    // No companies to display, inform the user
+                    await Application.Current.MainPage.DisplayAlert("Notice", "No companies are currently available.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Inform the user of the error
+                await Application.Current.MainPage.DisplayAlert("Error", "Unable to load company data. Please try again later.", "OK");
+                Debug.WriteLine($"Failed to load companies: {ex.Message}");
+                Companies = new List<Company>(); // Ensure the list is initialized to avoid null reference issues
+            }
         }
+
         private async Task OnRegisterClicked()
         {
             if (string.IsNullOrWhiteSpace(Username) ||
