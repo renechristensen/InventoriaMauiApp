@@ -9,6 +9,9 @@ namespace InventoriaMauiApp.Services
     public interface IAuthorizationService
     {
         Task<string> GetAuthorizationTokenAsync();
+        public void LogOut();
+        public void LogIn(string token);
+
     }
 }
 
