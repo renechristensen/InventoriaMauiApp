@@ -37,6 +37,7 @@ namespace InventoriaMauiApp
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IAuthorizationService, AuthorizationService>();
+            services.AddSingleton<IDataRackStateService, DataRackStateService>();
             // add httpclients for each service
             RegisterHttpClients(services);
             // add viewmodels
@@ -71,7 +72,8 @@ namespace InventoriaMauiApp
             {
                 typeof(UserLoginViewModel),
                 typeof(UserRegisterViewModel),
-                typeof(DataRacksViewModel)
+                typeof(DataRacksViewModel),
+                typeof(DataRackDetailsViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));

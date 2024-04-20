@@ -12,7 +12,13 @@ namespace InventoriaMauiApp.ViewModels
     {
         private ObservableCollection<DataRack> _dataRacks = new();
         private readonly IDataRackService _dataRackService;
-
+        private readonly IDataRackStateService _dataRackStateService;
+        public DataRacksViewModel(IDataRackService dataRackService, IDataRackStateService dataRackStateService)
+        {
+            _dataRackService = dataRackService;
+            _dataRackStateService = dataRackStateService;
+            LoadDataRacks();
+        }
         public ObservableCollection<DataRack> DataRacks
         {
             get => _dataRacks;
@@ -40,15 +46,12 @@ namespace InventoriaMauiApp.ViewModels
         {
             if (dataRack == null) return;
             // Navigate to the details page for the selected data rack
+            _dataRackStateService.CurrentDataRack = dataRack;
             await Shell.Current.GoToAsync($"DataRackDetailsPage", true, new Dictionary<string, object> { { "DataRack", dataRack } });
             //await Shell.Current.GoToAsync($"{nameof(DataRackDetailsPage)}", true, new Dictionary<string, object> { { "DataRack", dataRack } });
         }
 
-        public DataRacksViewModel(IDataRackService dataRackService)
-        {
-            _dataRackService = dataRackService;
-            LoadDataRacks();
-        }
+
 
         [RelayCommand]
         void Appearing()
