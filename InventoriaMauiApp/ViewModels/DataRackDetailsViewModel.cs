@@ -4,6 +4,7 @@ using InventoriaMauiApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using InventoriaMauiApp.Services;
+using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
@@ -13,18 +14,18 @@ namespace InventoriaMauiApp.ViewModels
         private DataRack _dataRack;
         private readonly IDataRackStateService _dataRackStateService;
 
-
+        public ICommand NavigateBackCommand { get; }
+        public ICommand OpenRackContentCommand { get; }
         public DataRackDetailsViewModel(IDataRackStateService dataRackStateService)
         {
             _dataRackStateService = dataRackStateService;
             DataRack = _dataRackStateService.CurrentDataRack;
+            NavigateBackCommand = new Command(async () => await NavigateBack());
         }
 
-        // Example Command (if you need to perform actions like saving changes, etc.)
-        [RelayCommand]
-        private void PerformSomeAction()
+        private async Task NavigateBack()
         {
-            // Implement your logic
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

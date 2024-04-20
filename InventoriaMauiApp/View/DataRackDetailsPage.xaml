@@ -30,38 +30,43 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                <StackLayout>
+                    <!-- Rows for each property, labels and values aligned in separate columns -->
 
-                <!-- Rows for each property, labels and values aligned in separate columns -->
+                    <Label Grid.Row="0" Grid.Column="0" Text="Navn:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding DataRack.DatarackName}" FontSize="16" />
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Navn:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DataRack.DatarackName}" FontSize="16" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="Server Rum:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataRack.ServerRoomName}" FontSize="16" />
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Server Rum:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataRack.ServerRoomName}" FontSize="16" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="Opstart:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding DataRack.RackStartupDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" />
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Opstart:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DataRack.RackStartupDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" />
+                    <Label Grid.Row="3" Grid.Column="0" Text="Status:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding DataRack.RackStatus}" FontSize="16" />
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Status:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding DataRack.RackStatus}" FontSize="16" />
+                    <Label Grid.Row="4" Grid.Column="0" Text="Antal Units:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding DataRack.TotalUnits}" FontSize="16" />
 
-                <Label Grid.Row="4" Grid.Column="0" Text="Antal Units:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="4" Grid.Column="1" Text="{Binding DataRack.TotalUnits}" FontSize="16" />
+                    <Label Grid.Row="5" Grid.Column="0" Text="Ledige Units:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding DataRack.AvailableUnits}" FontSize="16" />
 
-                <Label Grid.Row="5" Grid.Column="0" Text="Ledige Units:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="5" Grid.Column="1" Text="{Binding DataRack.AvailableUnits}" FontSize="16" />
+                    <Label Grid.Row="6" Grid.Column="0" Text="Datacenter:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding DataRack.DataCenterName}" FontSize="16" />
 
-                <Label Grid.Row="6" Grid.Column="0" Text="Datacenter:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="6" Grid.Column="1" Text="{Binding DataRack.DataCenterName}" FontSize="16" />
+                    <Label Grid.Row="7" Grid.Column="0" Text="Virksomhed:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding DataRack.CompanyName}" FontSize="16" />
 
-                <Label Grid.Row="7" Grid.Column="0" Text="Virksomhed:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="7" Grid.Column="1" Text="{Binding DataRack.CompanyName}" FontSize="16" />
+                    <Label Grid.Row="8" Grid.Column="0" Text="Placering:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding DataRack.RackPlacement}" FontSize="16" />
 
-                <Label Grid.Row="8" Grid.Column="0" Text="Placering:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="8" Grid.Column="1" Text="{Binding DataRack.RackPlacement}" FontSize="16" />
-
-                <Label Grid.Row="9" Grid.Column="0" Text="Adgang:" FontSize="16" FontAttributes="Bold" />
-                <Label Grid.Row="9" Grid.Column="1" Text="{Binding DataRack.Roles, Converter={StaticResource ListToStringConverter}}" FontSize="16" />
+                    <Label Grid.Row="9" Grid.Column="0" Text="Adgang:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding DataRack.Roles, Converter={StaticResource ListToStringConverter}}" FontSize="16" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Tilbage" Command="{Binding NavigateBackCommand}" Margin="10" />
+                        <Button Text="Rack indhold" Command="{Binding OpenRackContentCommand}" Margin="10" />
+                    </StackLayout>
+                </StackLayout>
             </Grid>
         </Frame>
     </ScrollView>
