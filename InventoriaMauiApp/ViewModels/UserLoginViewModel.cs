@@ -57,7 +57,7 @@ namespace InventoriaMauiApp.ViewModels
                 {
                     _authorizationService.LogIn(token);
                     await SecureStorage.SetAsync("user_id", user?.UserID.ToString() ?? "0");
-                    await Shell.Current.GoToAsync("//DataRackOverview");
+                    await Shell.Current.GoToAsync("//DataRackOverView");
                 }
                 else
                 {

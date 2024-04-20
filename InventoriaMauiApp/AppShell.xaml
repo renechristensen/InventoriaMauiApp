@@ -21,5 +21,13 @@
                 Route="RegisterPage" />
         </Tab>
     </TabBar>
-    
+    <TabBar Title="Logged ind">
+        <Tab Title="Log ind">
+            <ShellContent
+            Title="Log ind"
+            ContentTemplate="{DataTemplate local:DataRackOverViewPage}"
+            Route="DataRackOverView" />
+        </Tab>
+    </TabBar>
+
 </Shell>
