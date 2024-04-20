@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:InventoriaMauiApp.Models"
+             xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:DataRacksViewModel"
              x:Class="InventoriaMauiApp.View.DataRackOverViewPage"
-             Title="DataRackOverViewPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Data Rack Overview"
+             x:Name="ThisPage">
+
+    <!-- Commented out behaviors for future implementation -->
+    <!--<ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>-->
+
+    <CollectionView ItemsSource="{Binding DataRacks}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:DataRack">
+                <Frame Padding="10,8" Margin="5" CornerRadius="0" BorderColor="#ddd" BackgroundColor="#f9f9f9"
+                        HorizontalOptions="Center" WidthRequest="300" MaximumWidthRequest="450">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, 20, *">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Navn:" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding DatarackName}" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Status:" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding RackStatus}" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Antal units:" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+                        <Label Grid.Row="2" Grid.Column="2" Text="{Binding TotalUnits}" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 9, 0, 0"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Ledige units:" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 0, 0, 0"/>
+                        <Label Grid.Row="3" Grid.Column="2" Text="{Binding AvailableUnits}" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="Details"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DataRacksViewModel}}, Path=ViewDataRackDetailsCommand}"
+                                CommandParameter="{Binding .}"
+                                HorizontalOptions="End" VerticalOptions="End"/>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </ContentPage>

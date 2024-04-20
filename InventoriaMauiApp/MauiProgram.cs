@@ -70,7 +70,8 @@ namespace InventoriaMauiApp
             var viewModels = new List<Type>
             {
                 typeof(UserLoginViewModel),
-                typeof(UserRegisterViewModel)
+                typeof(UserRegisterViewModel),
+                typeof(DataRacksViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
