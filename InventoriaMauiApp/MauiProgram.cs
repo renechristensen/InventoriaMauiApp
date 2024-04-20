@@ -83,7 +83,8 @@ namespace InventoriaMauiApp
             {
                 typeof(LoginPage),
                 typeof(RegisterPage),
-                typeof(DataRackOverViewPage)
+                typeof(DataRackOverViewPage),
+                typeof(DataRackDetailsPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));

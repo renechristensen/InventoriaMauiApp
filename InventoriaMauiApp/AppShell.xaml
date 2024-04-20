@@ -28,6 +28,13 @@
             ContentTemplate="{DataTemplate local:DataRackOverViewPage}"
             Route="DataRackOverView" />
         </Tab>
+        <Tab Title="Detaljer">
+            <ShellContent
+            Title="Detaljer"
+            IsVisible="False"
+            ContentTemplate="{DataTemplate local:DataRackDetailsPage}"
+            Route="DataRackDetailsPage" />
+        </Tab>
     </TabBar>
 
 </Shell>
