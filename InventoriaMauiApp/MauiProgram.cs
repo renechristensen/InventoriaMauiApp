@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Polly.Extensions.Http;
 using Polly;
 using InventoriaMauiApp.ViewModels;
-using InventoriaMauiApp.Views;
+using InventoriaMauiApp.View;
 
 namespace InventoriaMauiApp
 {
@@ -81,7 +81,8 @@ namespace InventoriaMauiApp
             var pages = new List<Type>
             {
                 typeof(LoginPage),
-                typeof(RegisterPage)
+                typeof(RegisterPage),
+                typeof(DataRackOverViewPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));

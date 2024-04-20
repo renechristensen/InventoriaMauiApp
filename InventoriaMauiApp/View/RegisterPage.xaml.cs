@@ -1,5 +1,5 @@
 using InventoriaMauiApp;
-using static InventoriaMauiApp.Views.RegisterPage;
+using static InventoriaMauiApp.View.RegisterPage;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using InventoriaMauiApp.Models;
 
 using InventoriaMauiApp.ViewModels;
 
-namespace InventoriaMauiApp.Views;
+namespace InventoriaMauiApp.View;
 
 public partial class RegisterPage : ContentPage
 {

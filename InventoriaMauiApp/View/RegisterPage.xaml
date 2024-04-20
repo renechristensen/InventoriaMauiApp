@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:DataType="viewmodel:UserRegisterViewModel"
-             x:Class="InventoriaMauiApp.Views.RegisterPage"
+             x:Class="InventoriaMauiApp.View.RegisterPage"
              Title="Registrerings side"
              BackgroundColor="#f0f0f0">
     <ScrollView>

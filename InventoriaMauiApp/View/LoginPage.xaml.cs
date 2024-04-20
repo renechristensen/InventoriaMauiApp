@@ -1,7 +1,7 @@
-﻿namespace InventoriaMauiApp.Views;
+﻿namespace InventoriaMauiApp.View;
 using InventoriaMauiApp.ViewModels;
 using InventoriaMauiApp;
-using static InventoriaMauiApp.Views.LoginPage;
+using static InventoriaMauiApp.View.LoginPage;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
