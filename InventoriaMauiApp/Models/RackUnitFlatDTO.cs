@@ -34,5 +34,8 @@ namespace InventoriaMauiApp.Models
 
         [JsonProperty("EquipmentType")]
         public string? EquipmentType { get; set; }
+
+        // local variable
+        public bool IsSelected { get; set; }
     }
 }

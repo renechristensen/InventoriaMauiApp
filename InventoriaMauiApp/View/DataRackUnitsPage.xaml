@@ -53,9 +53,11 @@
                                 Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ViewRackUnitDetailsCommand}"
                                 CommandParameter="{Binding .}"
                                 HorizontalOptions="Start"/>
-                        <CheckBox Grid.Row="3" Grid.Column="0"
+                        <CheckBox 
+                            IsChecked="{Binding IsSelected, Mode=TwoWay}"
                             IsVisible="{Binding ., Converter={StaticResource IsFreeConverterKey}}"
-                            HorizontalOptions="Start"/>
+                            CheckedChanged="OnCheckBoxCheckedChanged"
+                            HorizontalOptions="End"/>
                     </Grid>
                 </Frame>
             </DataTemplate>
