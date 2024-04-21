@@ -85,7 +85,8 @@ namespace InventoriaMauiApp
                 typeof(UserRegisterViewModel),
                 typeof(DataRacksViewModel),
                 typeof(DataRackDetailsViewModel),
-                typeof(DataRackUnitsViewModel)
+                typeof(DataRackUnitsViewModel),
+                typeof(ReservationViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using InventoriaMauiApp.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace InventoriaMauiApp.ViewModels
 {
@@ -50,10 +51,12 @@ namespace InventoriaMauiApp.ViewModels
             try
             {
                 var jsonString = await _userService.LoginAsync(Email, Password);
-                var deserializedObject = JsonSerializer.Deserialize<Root>(jsonString);
+                var authResponse = JsonConvert.DeserializeObject<AuthResponse>(jsonString);
+                var user = authResponse.Login;
+                var token = authResponse.Token;
 
-                string? token = deserializedObject?.Token;
-                User? user = deserializedObject?.User;
+                //string? token = deserializedObject?.Token;
+                //User? user = deserializedObject?.User;
 
                 if (!string.IsNullOrEmpty(token))
                 {
