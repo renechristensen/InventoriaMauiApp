@@ -38,6 +38,7 @@ namespace InventoriaMauiApp
         {
             services.AddSingleton<IAuthorizationService, AuthorizationService>();
             services.AddSingleton<IDataRackStateService, DataRackStateService>();
+            services.AddSingleton<IRackUnitStateService, RackUnitStateService>();
             // add httpclients for each service
             RegisterHttpClients(services);
             // add viewmodels

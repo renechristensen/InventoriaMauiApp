@@ -14,17 +14,19 @@ namespace InventoriaMauiApp.ViewModels
     {
         private readonly IRackUnitService _rackUnitService;
         private readonly IDataRackStateService _dataRackStateService;
+        private readonly IRackUnitStateService _rackUnitStateService;
 
         private ObservableCollection<RackUnitFlatDTO> _rackUnits = new();
         public ICommand LoadDataCommand { get; }
 
 
-        public DataRackUnitsViewModel(IRackUnitService rackUnitService, IDataRackStateService dataRackStateService)
+        public DataRackUnitsViewModel(IRackUnitService rackUnitService, IDataRackStateService dataRackStateService, IRackUnitStateService rackUnitStateService)
         {
             _rackUnitService = rackUnitService;
             _dataRackStateService = dataRackStateService;
             LoadDataCommand = new RelayCommand(Appearing);
             LoadRackUnits();
+            _rackUnitStateService = rackUnitStateService;
         }
 
         public ObservableCollection<RackUnitFlatDTO> RackUnits
