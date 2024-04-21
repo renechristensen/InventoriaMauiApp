@@ -51,12 +51,16 @@ namespace InventoriaMauiApp.ViewModels
             LoadRackUnitsCommand = new Command(async () => await LoadRackUnits());
             ViewRackUnitDetailsCommand = new Command<RackUnitFlatDTO>(async (rackUnit) => await ViewRackUnitDetails(rackUnit));
             ToggleReservationCommand = new Command<int>(ToggleReservation);
-
             NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
-            //NavigateBackCommand = new RelayCommand(async () => await Shell.Current.GoToAsync(".."));
-            NavigateToReservationCommand = new RelayCommand(async () => await Shell.Current.GoToAsync("ReservationPage"));
+            NavigateToReservationCommand = new Command(async () => await GoToReservation());
         }
 
+        public async Task GoToReservation()
+        {
+
+            _rackUnitStateService.SelectedRackUnitIds = _selectedRackUnitIds;
+            await Shell.Current.GoToAsync("ReservationPage");
+        }
         public async Task LoadRackUnits()
         {
             try
@@ -116,6 +120,7 @@ namespace InventoriaMauiApp.ViewModels
         [RelayCommand]
         public void Appearing()
         {
+            _rackUnitStateService.SelectedRackUnitIds.Clear();
             RackUnits.Clear();
             LoadRackUnits();
         }

@@ -14,14 +14,16 @@ namespace InventoriaMauiApp.ViewModels
         private string _password = string.Empty;
         private readonly IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
+        private readonly IUserStateService _userStateService;
 
         public ICommand LoginCommand { get; }
 
-        public UserLoginViewModel(IUserService userService, IAuthorizationService authorizationService)
+        public UserLoginViewModel(IUserService userService, IAuthorizationService authorizationService, IUserStateService userStateService)
         {
             _userService = userService;
             LoginCommand = new Command(async () => await OnLoginClicked());
             _authorizationService = authorizationService;
+            _userStateService = userStateService;
         }
 
         public string Email
@@ -56,7 +58,17 @@ namespace InventoriaMauiApp.ViewModels
                 if (!string.IsNullOrEmpty(token))
                 {
                     _authorizationService.LogIn(token);
-                    await SecureStorage.SetAsync("user_id", user?.UserID.ToString() ?? "0");
+                    _userStateService.CurrentUser = new User() {
+                        Roles = user.Roles,
+                        CompanyID = user.CompanyID,
+                        CompanyName = user.CompanyName,
+                        CreationDate = user.CreationDate,
+                        Displayname = user.Displayname,
+                        LastLoginDate = user.LastLoginDate,
+                        StudieEmail = user.StudieEmail,
+                        UserID = user.UserID
+                        // Skip password for security
+                    };
                     await Shell.Current.GoToAsync("//DataRackOverView");
                 }
                 else
