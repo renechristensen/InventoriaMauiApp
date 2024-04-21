@@ -14,9 +14,10 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ReservationStatusToBackgroundColorConverter x:Key="StatusColorConverter"/>
+            <converters:IsFreeConverter x:Key="IsFreeConverterKey"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Behaviors>
         <mct:EventToCommandBehavior Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.LoadDataCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
@@ -28,8 +29,8 @@
                        BorderColor="Gray"
                        BackgroundColor="{Binding ., Converter={StaticResource StatusColorConverter}}"
                        HorizontalOptions="FillAndExpand">
-                    <Grid ColumnDefinitions="*, *"
-                          RowDefinitions="Auto, Auto, Auto, auto">
+                    <Grid ColumnDefinitions="*, Auto, Auto"
+                          RowDefinitions="Auto, Auto, Auto, Auto">
                         <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}"
                                Grid.Row="0" Grid.Column="0"
                                FontAttributes="Bold"/>
@@ -46,6 +47,15 @@
                                Grid.Row="2" Grid.Column="0"/>
                         <Label Text="{Binding EndDate, StringFormat='End: {0}'}"
                                Grid.Row="2" Grid.Column="1"/>
+
+                        <Button Grid.Row="3" Grid.Column="2"
+                                Text="Details"
+                                Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ViewRackUnitDetailsCommand}"
+                                CommandParameter="{Binding .}"
+                                HorizontalOptions="Start"/>
+                        <CheckBox Grid.Row="3" Grid.Column="0"
+                            IsVisible="{Binding ., Converter={StaticResource IsFreeConverterKey}}"
+                            HorizontalOptions="Start"/>
                     </Grid>
                 </Frame>
             </DataTemplate>

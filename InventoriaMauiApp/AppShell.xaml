@@ -42,6 +42,13 @@
             ContentTemplate="{DataTemplate local:DataRackUnitsPage}"
             Route="DataRackUnitsPage" />
         </Tab>
+        <Tab Title="Rack Unit">
+            <ShellContent
+            Title="Rack Unit"
+            IsVisible="False"
+            ContentTemplate="{DataTemplate local:RackUnitDetailsPage}"
+            Route="DataRackUnitsPage" />
+        </Tab>
     </TabBar>
 
 </Shell>

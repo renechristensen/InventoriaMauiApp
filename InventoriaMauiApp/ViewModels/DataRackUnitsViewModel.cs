@@ -20,22 +20,26 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand LoadDataCommand { get; }
 
 
+        public ICommand LoadRackUnitsCommand { get; set; }
+        public ICommand ViewRackUnitDetailsCommand { get; set; }
+        public ICommand ToggleReservationCommand { get; }
+
         public DataRackUnitsViewModel(IRackUnitService rackUnitService, IDataRackStateService dataRackStateService, IRackUnitStateService rackUnitStateService)
         {
             _rackUnitService = rackUnitService;
             _dataRackStateService = dataRackStateService;
             LoadDataCommand = new RelayCommand(Appearing);
-            LoadRackUnits();
             _rackUnitStateService = rackUnitStateService;
-        }
 
+            LoadRackUnitsCommand = new Command(async () => await LoadRackUnits());
+            ViewRackUnitDetailsCommand = new Command<RackUnitFlatDTO>(async (rackUnit) => await ViewRackUnitDetails(rackUnit));
+            ToggleReservationCommand = new Command<RackUnitFlatDTO>(ToggleReservation);
+        }
         public ObservableCollection<RackUnitFlatDTO> RackUnits
         {
             get => _rackUnits;
             set => Set(ref _rackUnits, value);
         }
-
-        [RelayCommand]
         public async Task LoadRackUnits()
         {
             try
@@ -48,12 +52,24 @@ namespace InventoriaMauiApp.ViewModels
             }
             catch (Exception ex)
             {
-                // Handle exceptions (e.g., log the error and inform the user)
                 Console.WriteLine("Failed to load rack units: " + ex.Message);
             }
         }
 
-        // Called when the page appears
+        private async Task ViewRackUnitDetails(RackUnitFlatDTO rackUnit)
+        {
+            if (rackUnit == null) return;
+
+            _rackUnitStateService.CurrentRackUnit = rackUnit;
+            await Shell.Current.GoToAsync($"RackUnitDetailsPage");
+        }
+
+        private void ToggleReservation(RackUnitFlatDTO rackUnit)
+        {
+            if (rackUnit == null) return;
+
+            // Implementation of toggle reservation here, assuming updating the UI or the server
+        }
         [RelayCommand]
         public void Appearing()
         {
