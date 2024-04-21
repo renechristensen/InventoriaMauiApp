@@ -47,7 +47,14 @@
             Title="Rack Unit"
             IsVisible="False"
             ContentTemplate="{DataTemplate local:RackUnitDetailsPage}"
-            Route="DataRackUnitsPage" />
+            Route="RackUnitPage" />
+        </Tab>
+        <Tab Title="Reservationsside">
+            <ShellContent
+            Title="Reservationside"
+            IsVisible="False"
+            ContentTemplate="{DataTemplate local:ReservationPage}"
+            Route="NewReservationPage" />
         </Tab>
     </TabBar>
 

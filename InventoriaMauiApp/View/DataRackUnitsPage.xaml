@@ -21,46 +21,55 @@
     <ContentPage.Behaviors>
         <mct:EventToCommandBehavior Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.LoadDataCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-
-    <CollectionView ItemsSource="{Binding RackUnits}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:RackUnitFlatDTO">
-                <Frame Padding="10" Margin="5" CornerRadius="5"
+    <ScrollView>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding RackUnits}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:RackUnitFlatDTO">
+                        <Frame Padding="10" Margin="5" CornerRadius="5"
                        BorderColor="Gray"
                        BackgroundColor="{Binding ., Converter={StaticResource StatusColorConverter}}"
                        HorizontalOptions="FillAndExpand">
-                    <Grid ColumnDefinitions="*, Auto, Auto"
+                            <Grid ColumnDefinitions="*, Auto, Auto"
                           RowDefinitions="Auto, Auto, Auto, Auto">
-                        <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}"
+                                <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}"
                                Grid.Row="0" Grid.Column="0"
                                FontAttributes="Bold"/>
-                        <Label Text="{Binding EquipmentName, StringFormat='Equipment: {0}'}"
+                                <Label Text="{Binding EquipmentName, StringFormat='Equipment: {0}'}"
                                Grid.Row="0" Grid.Column="1"
                                FontAttributes="Bold"/>
 
-                        <Label Text="{Binding DisplayName, StringFormat='Reserved by: {0}'}"
+                                <Label Text="{Binding DisplayName, StringFormat='Reserved by: {0}'}"
                                Grid.Row="1" Grid.Column="0"
                                Grid.ColumnSpan="2"
                                FontAttributes="Bold"/>
 
-                        <Label Text="{Binding StartDate, StringFormat='Start: {0}'}"
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0}'}"
                                Grid.Row="2" Grid.Column="0"/>
-                        <Label Text="{Binding EndDate, StringFormat='End: {0}'}"
+                                <Label Text="{Binding EndDate, StringFormat='End: {0}'}"
                                Grid.Row="2" Grid.Column="1"/>
 
-                        <Button Grid.Row="3" Grid.Column="2"
+                                <Button Grid.Row="3" Grid.Column="2"
                                 Text="Details"
                                 Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ViewRackUnitDetailsCommand}"
                                 CommandParameter="{Binding .}"
                                 HorizontalOptions="Start"/>
-                        <CheckBox 
+                                <CheckBox 
                             IsChecked="{Binding IsSelected, Mode=TwoWay}"
                             IsVisible="{Binding ., Converter={StaticResource IsFreeConverterKey}}"
                             CheckedChanged="OnCheckBoxCheckedChanged"
                             HorizontalOptions="End"/>
-                    </Grid>
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Tilbage"
+                Command="{Binding NavigateBackCommand}"
+                HorizontalOptions="FillAndExpand"/>
+            <Button Text="Reserver"
+                Command="{Binding NavigateToReservationCommand}"
+                HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

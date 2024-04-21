@@ -71,6 +71,10 @@ namespace InventoriaMauiApp
             services.AddHttpClient<IRackUnitService, RackUnitService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
+
+            services.AddHttpClient<IReservationService, ReservationService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
         }
         private static void RegisterViewModels(IServiceCollection services)
         {
@@ -95,7 +99,8 @@ namespace InventoriaMauiApp
                 typeof(DataRackOverViewPage),
                 typeof(DataRackDetailsPage),
                 typeof(DataRackUnitsPage),
-                typeof(RackUnitDetailsPage)
+                typeof(RackUnitDetailsPage),
+                typeof(ReservationPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));

@@ -18,18 +18,21 @@ namespace InventoriaMauiApp.ViewModels
         private readonly IRackUnitStateService _rackUnitStateService;
 
         private ObservableCollection<RackUnitFlatDTO> _rackUnits = new();
-        public ICommand LoadDataCommand { get; }
+
         private HashSet<int> _selectedRackUnitIds = new();
-
-
+        public ICommand LoadDataCommand { get; }
+        public ICommand LoadRackUnitsCommand { get; set; }
+        public ICommand ViewRackUnitDetailsCommand { get; set; }
+        public ICommand ToggleReservationCommand { get; }
+        public ICommand NavigateBackCommand { get; private set; }
+        public ICommand NavigateToReservationCommand { get; private set; }
         public ObservableCollection<RackUnitFlatDTO> RackUnits
         {
             get => _rackUnits;
             set => Set(ref _rackUnits, value);
         }
-        public ICommand LoadRackUnitsCommand { get; set; }
-        public ICommand ViewRackUnitDetailsCommand { get; set; }
-        public ICommand ToggleReservationCommand { get; }
+
+
         public HashSet<int> SelectedRackUnitIds
         {
             get => _selectedRackUnitIds;
@@ -48,6 +51,10 @@ namespace InventoriaMauiApp.ViewModels
             LoadRackUnitsCommand = new Command(async () => await LoadRackUnits());
             ViewRackUnitDetailsCommand = new Command<RackUnitFlatDTO>(async (rackUnit) => await ViewRackUnitDetails(rackUnit));
             ToggleReservationCommand = new Command<int>(ToggleReservation);
+
+            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
+            //NavigateBackCommand = new RelayCommand(async () => await Shell.Current.GoToAsync(".."));
+            NavigateToReservationCommand = new RelayCommand(async () => await Shell.Current.GoToAsync("ReservationPage"));
         }
 
         public async Task LoadRackUnits()
