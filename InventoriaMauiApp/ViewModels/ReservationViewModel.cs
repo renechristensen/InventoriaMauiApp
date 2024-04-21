@@ -25,6 +25,7 @@ namespace InventoriaMauiApp.ViewModels
             _rackUnitStateService = rackUnitStateService;
 
             CreateReservationCommand = new Command(async () => await CreateReservation());
+
             NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
             _userStateService = userStateService;
         }
@@ -66,7 +67,8 @@ namespace InventoriaMauiApp.ViewModels
             {
                 var reservation = await _reservationService.CreateReservation(createReservationDTO);
                 await Application.Current.MainPage.DisplayAlert("Success", "Reservation created successfully.", "OK");
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync("//DataRackOverView");
+
             }
             catch (Exception ex)
             {

@@ -56,6 +56,13 @@
             ContentTemplate="{DataTemplate local:ReservationPage}"
             Route="NewReservationPage" />
         </Tab>
+        <Tab Title="Reservations oversigt">
+            <ShellContent
+            Title="Reservations oversigt"
+            IsVisible="True"
+            ContentTemplate="{DataTemplate local:ReservationOverviewPage}"
+            Route="ReservationOverviewPage" />
+        </Tab>
     </TabBar>
 
 </Shell>

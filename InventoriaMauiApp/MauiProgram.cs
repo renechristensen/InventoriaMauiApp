@@ -102,7 +102,8 @@ namespace InventoriaMauiApp
                 typeof(DataRackDetailsPage),
                 typeof(DataRackUnitsPage),
                 typeof(RackUnitDetailsPage),
-                typeof(ReservationPage)
+                typeof(ReservationPage),
+                typeof(ReservationOverviewPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));
