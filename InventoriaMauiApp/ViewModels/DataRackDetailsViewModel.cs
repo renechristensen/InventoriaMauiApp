@@ -21,11 +21,18 @@ namespace InventoriaMauiApp.ViewModels
             _dataRackStateService = dataRackStateService;
             DataRack = _dataRackStateService.CurrentDataRack;
             NavigateBackCommand = new Command(async () => await NavigateBack());
+            OpenRackContentCommand = new Command(async () => await OpenRackContent());
         }
 
         private async Task NavigateBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        private async Task OpenRackContent()
+        {
+            // Navigate to DataRackUnitsPage without parameters
+            await Shell.Current.GoToAsync("DataRackUnitsPage");
         }
     }
 }

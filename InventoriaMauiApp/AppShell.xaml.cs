@@ -8,6 +8,8 @@ namespace InventoriaMauiApp
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(DataRackDetailsPage), typeof(DataRackDetailsPage));
+            Routing.RegisterRoute(nameof(DataRackUnitsPage), typeof(DataRackUnitsPage));
+
         }
     }
 }

@@ -62,7 +62,12 @@ namespace InventoriaMauiApp
             services.AddHttpClient<ICompanyService, CompanyService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
+
             services.AddHttpClient<IDataRackService, DataRackService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
+
+            services.AddHttpClient<IRackUnitService, RackUnitService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
         }
@@ -73,7 +78,8 @@ namespace InventoriaMauiApp
                 typeof(UserLoginViewModel),
                 typeof(UserRegisterViewModel),
                 typeof(DataRacksViewModel),
-                typeof(DataRackDetailsViewModel)
+                typeof(DataRackDetailsViewModel),
+                typeof(DataRackUnitsViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
@@ -86,7 +92,8 @@ namespace InventoriaMauiApp
                 typeof(LoginPage),
                 typeof(RegisterPage),
                 typeof(DataRackOverViewPage),
-                typeof(DataRackDetailsPage)
+                typeof(DataRackDetailsPage),
+                typeof(DataRackUnitsPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));
