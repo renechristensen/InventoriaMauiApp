@@ -83,6 +83,10 @@ namespace InventoriaMauiApp
             services.AddHttpClient<IReservedRackUnitsService, ReservedRackUnitsService>(httpClientConfig)
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                     .AddPolicyHandler(retryPolicy);
+
+            services.AddHttpClient<IEquipmentService, EquipmentService>(httpClientConfig)
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                    .AddPolicyHandler(retryPolicy);
         }
         private static void RegisterViewModels(IServiceCollection services)
         {
@@ -96,7 +100,8 @@ namespace InventoriaMauiApp
                 typeof(ReservationViewModel),
                 typeof(ReservationOverviewViewModel),
                 typeof(ReservationDetailsViewModel),
-                typeof(ReservationRackUnitsViewModel)
+                typeof(ReservationRackUnitsViewModel),
+                typeof(EquipmentViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
