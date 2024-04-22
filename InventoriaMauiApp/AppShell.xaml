@@ -70,6 +70,13 @@
             ContentTemplate="{DataTemplate local:ReservationDetailsPage}"
             Route="ReservationDetailsPage" />
         </Tab>
+        <Tab Title="Reserverede Units">
+            <ShellContent
+            Title="Reserverede Units"
+            IsVisible="False"
+            ContentTemplate="{DataTemplate local:ReservedUnitsPage}"
+            Route="ReservedUnitsPage" />
+        </Tab>
     </TabBar>
 
 </Shell>

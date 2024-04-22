@@ -90,7 +90,8 @@ namespace InventoriaMauiApp
                 typeof(DataRackDetailsViewModel),
                 typeof(DataRackUnitsViewModel),
                 typeof(ReservationViewModel),
-                typeof(ReservationOverviewViewModel)
+                typeof(ReservationOverviewViewModel),
+                typeof(ReservationDetailsViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
@@ -108,7 +109,8 @@ namespace InventoriaMauiApp
                 typeof(RackUnitDetailsPage),
                 typeof(ReservationPage),
                 typeof(ReservationOverviewPage),
-                typeof(ReservationDetailsPage)
+                typeof(ReservationDetailsPage),
+                typeof(ReservedUnitsPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));
