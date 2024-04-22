@@ -14,6 +14,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ReservationStatusToBackgroundColorConverter x:Key="StatusColorConverter"/>
+            <converters:IsFreeOfEquipmentConverter x:Key="IsFreeOfEquipmentConverterKey"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -47,15 +48,23 @@
                                 <Label Text="{Binding EndDate, StringFormat='End: {0}'}"
                                        Grid.Row="2" Grid.Column="1"/>
                                 <Button Grid.Row="3" Grid.Column="2"
-                                    Text="Insert Equipment"
-                                    Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.InsertEquipmentCommand}"
-                                    CommandParameter="{Binding .}"
-                                    HorizontalOptions="Start"/>
+                                        Text="Details"
+                                        Command="{Binding Path=BindingContext.ViewRackUnitDetailsCommand, Source={x:Reference ThisPage}}"
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="Start"/>
+                                <CheckBox 
+                                    IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                    IsVisible="{Binding ., Converter={StaticResource IsFreeOfEquipmentConverterKey}}"
+                                    CheckedChanged="OnReservedCheckBoxCheckedChanged"
+                                    HorizontalOptions="End"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Text="Insert Equipment"
+                    Command="{Binding InsertEquipmentCommand}"
+                    HorizontalOptions="FillAndExpand"/>
             <Button Text="Tilbage"
                     Command="{Binding NavigateBackCommand}"
                     HorizontalOptions="FillAndExpand"/>

@@ -12,6 +12,7 @@ namespace InventoriaMauiApp.ViewModels
     {
         private readonly IReservedRackUnitsService _reservedRackUnitsService;
         private readonly IReservationStateService _reservationStateService;
+        private readonly IRackUnitStateService _rackUnitStateService;
         private ObservableCollection<RackUnitFlatDTO> _rackUnits = new();
         public ICommand NavigateBackCommand { get; }
         public ICommand InsertEquipmentCommand { get; private set; }
@@ -22,19 +23,23 @@ namespace InventoriaMauiApp.ViewModels
             set => Set(ref _rackUnits, value);
         }
 
-        public ReservationRackUnitsViewModel(IReservedRackUnitsService reservedRackUnitsService, IReservationStateService reservationStateService)
+        public ReservationRackUnitsViewModel(IReservedRackUnitsService reservedRackUnitsService, IReservationStateService reservationStateService, IRackUnitStateService rackUnitStateService)
         {
             _reservedRackUnitsService = reservedRackUnitsService;
+            _reservationStateService = reservationStateService;
+            _rackUnitStateService = rackUnitStateService;
             LoadReservedRackUnitsCommand = new RelayCommand(async () => await LoadReservedRackUnits());
             InsertEquipmentCommand = new RelayCommand(InsertEquipment);
-            _reservationStateService = reservationStateService;
             NavigateBackCommand = new RelayCommand(NavigateBack);
+
         }
 
         private async Task LoadReservedRackUnits()
         {
             try
             {
+                _rackUnitStateService.SelectedRackUnitIds.Clear();
+                RackUnits.Clear();
                 var units = await _reservedRackUnitsService.GetReservedRackUnitsByReservationIdAsync(_reservationStateService.CurrentReservationDTO.ReservationID);
                 RackUnits = new ObservableCollection<RackUnitFlatDTO>(units);
             }
@@ -44,14 +49,41 @@ namespace InventoriaMauiApp.ViewModels
                 // Handle exceptions or errors appropriately
             }
         }
+
+        public void HandleCheckChanged(RackUnitFlatDTO rackUnit, bool isChecked)
+        {
+            if (rackUnit == null) return;
+
+            rackUnit.IsSelected = isChecked;
+
+            if (isChecked)
+                _reservationStateService.SelectedRackUnitIds.Add(rackUnit.RackUnitID);
+            else
+                _reservationStateService.SelectedRackUnitIds.Remove(rackUnit.RackUnitID);
+
+            OnPropertyChanged(nameof(RackUnits));
+        }
+
         private void InsertEquipment()
         {
+            Console.Write(_reservationStateService.SelectedRackUnitIds);
             // Placeholder for inserting equipment logic
-            Console.WriteLine("Insert equipment functionality is not yet implemented.");
+            Shell.Current.GoToAsync("InsertEquipmentPage");
+
         }
         private async void NavigateBack()
         {
-            await Shell.Current.GoToAsync("ReservationDetailsPage");
+           await Shell.Current.GoToAsync("ReservationDetailsPage");
+        }
+
+        [RelayCommand]
+        private async Task ViewRackUnitDetails(RackUnitFlatDTO rackUnit)
+        {
+            if (rackUnit != null)
+            {
+                _rackUnitStateService.CurrentRackUnit = rackUnit;
+                await Shell.Current.GoToAsync($"RackUnitDetailsPage");
+            }
         }
     }
 }

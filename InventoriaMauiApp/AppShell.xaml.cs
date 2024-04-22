@@ -15,6 +15,7 @@ namespace InventoriaMauiApp
             Routing.RegisterRoute(nameof(DataRackOverViewPage), typeof(DataRackOverViewPage));
             Routing.RegisterRoute(nameof(ReservationDetailsPage), typeof(ReservationDetailsPage));
             Routing.RegisterRoute(nameof(ReservedUnitsPage), typeof(ReservedUnitsPage));
+            Routing.RegisterRoute(nameof(InsertEquipmentPage), typeof(InsertEquipmentPage));
         }
     }
 }

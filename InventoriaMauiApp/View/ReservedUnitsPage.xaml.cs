@@ -16,4 +16,12 @@ public partial class ReservedUnitsPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+    private void OnReservedCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (sender is CheckBox checkBox && checkBox.BindingContext is RackUnitFlatDTO rackUnit)
+        {
+            var viewModel = (ReservationRackUnitsViewModel)BindingContext;
+            viewModel.HandleCheckChanged(rackUnit, e.Value);
+        }
+    }
 }
