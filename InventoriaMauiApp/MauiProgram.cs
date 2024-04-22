@@ -37,9 +37,12 @@ namespace InventoriaMauiApp
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IAuthorizationService, AuthorizationService>();
+
+            // individual state services, refactor this for a single state service
             services.AddSingleton<IDataRackStateService, DataRackStateService>();
             services.AddSingleton<IRackUnitStateService, RackUnitStateService>();
             services.AddSingleton<IUserStateService, UserStateService>();
+            services.AddSingleton<IReservationStateService, ReservationStateService>();
             // add httpclients for each service
             RegisterHttpClients(services);
             // add viewmodels
@@ -86,7 +89,8 @@ namespace InventoriaMauiApp
                 typeof(DataRacksViewModel),
                 typeof(DataRackDetailsViewModel),
                 typeof(DataRackUnitsViewModel),
-                typeof(ReservationViewModel)
+                typeof(ReservationViewModel),
+                typeof(ReservationOverviewViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
@@ -103,7 +107,8 @@ namespace InventoriaMauiApp
                 typeof(DataRackUnitsPage),
                 typeof(RackUnitDetailsPage),
                 typeof(ReservationPage),
-                typeof(ReservationOverviewPage)
+                typeof(ReservationOverviewPage),
+                typeof(ReservationDetailsPage)
             };
 
             pages.ForEach(pageType => services.AddTransient(pageType));

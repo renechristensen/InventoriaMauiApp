@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:InventoriaMauiApp.Models"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:Class="InventoriaMauiApp.View.ReservationOverviewPage"
-             Title="ReservationOverviewPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:DataType="viewmodel:ReservationOverviewViewModel"
+             Title="Reservation Overview"
+             x:Name="ThisPage">
+
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding LoadReservationsCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+            <CollectionView ItemsSource="{Binding Reservations}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ReservationDTO">
+                        <Grid Padding="10" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, Auto">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding StartDate, StringFormat='Start: {0:dd/MM/yyyy}'}" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding EndDate, StringFormat='End: {0:dd/MM/yyyy}'}" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Background}" />
+                            <Button Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Text="Detaljer"
+                                Command="{Binding Path=BindingContext.OpenDetailsPageCommand, Source={x:Reference ThisPage}}"
+                                CommandParameter="{Binding .}"
+                                HorizontalOptions="End" VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
+
