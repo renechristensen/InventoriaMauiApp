@@ -101,7 +101,8 @@ namespace InventoriaMauiApp
                 typeof(ReservationOverviewViewModel),
                 typeof(ReservationDetailsViewModel),
                 typeof(ReservationRackUnitsViewModel),
-                typeof(EquipmentViewModel)
+                typeof(EquipmentViewModel),
+                typeof(RackUnitDetailsViewModel)
             };
 
             viewModels.ForEach(viewModelType => services.AddTransient(viewModelType));
