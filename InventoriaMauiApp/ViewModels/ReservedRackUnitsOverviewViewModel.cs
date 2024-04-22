@@ -51,7 +51,7 @@ namespace InventoriaMauiApp.ViewModels
         }
         private async void NavigateBack()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("ReservationDetailsPage");
         }
     }
 }

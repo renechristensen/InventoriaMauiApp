@@ -26,7 +26,7 @@ namespace InventoriaMauiApp.ViewModels
 
         private async Task NavigateBack()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("//ReservationOverviewPage");
         }
 
         private async Task OpenReservationContent()

@@ -26,7 +26,7 @@ namespace InventoriaMauiApp.ViewModels
 
             CreateReservationCommand = new Command(async () => await CreateReservation());
 
-            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
+            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync("DataRackUnitsPage"));
             _userStateService = userStateService;
         }
 

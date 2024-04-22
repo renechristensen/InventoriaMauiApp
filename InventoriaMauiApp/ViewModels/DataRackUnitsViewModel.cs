@@ -51,7 +51,7 @@ namespace InventoriaMauiApp.ViewModels
             LoadRackUnitsCommand = new Command(async () => await LoadRackUnits());
             ViewRackUnitDetailsCommand = new Command<RackUnitFlatDTO>(async (rackUnit) => await ViewRackUnitDetails(rackUnit));
             ToggleReservationCommand = new Command<int>(ToggleReservation);
-            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
+            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync("DataRackDetailsPage"));
             NavigateToReservationCommand = new Command(async () => await GoToReservation());
         }
 
