@@ -21,9 +21,11 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand LoadReservationsCommand { get; set; }
         public ICommand GoBackCommand { get; set; }
         public ICommand OpenReservationDetailsCommand { get; }
+        public ICommand RemoveReservationCommand { get; set; }
         public ReservationOverviewPageViewModel(IReservationService reservationService, IUserStateService userStateService, IReservationStateService reservationStateService)
         {
             LoadReservationsCommand = new RelayCommand(Appearing);
+            RemoveReservationCommand = new RelayCommand<ReservationDTO>(async (reservationDTO) => await RemoveReservation(reservationDTO));
             _reservationService = reservationService;
             _userStateService = userStateService;
             _reservationStateService = reservationStateService;
@@ -36,7 +38,22 @@ namespace InventoriaMauiApp.ViewModels
             get => _reservations;
             set => Set(ref _reservations, value);
         }
+        private async Task RemoveReservation(ReservationDTO reservationDTO)
+        {
+            if (reservationDTO == null)
+                return;
 
+            bool result = await _reservationService.DeleteReservation(reservationDTO.ReservationID);
+            if (result)
+            {
+                await Shell.Current.DisplayAlert("Success", "Reservation fjernet.", "OK");
+                await LoadReservations();
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Kunne ikke fjerne reservationen.", "OK");
+            }
+        }
         private async Task LoadReservations()
         {
             try

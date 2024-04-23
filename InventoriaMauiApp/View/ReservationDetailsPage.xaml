@@ -5,7 +5,7 @@
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
              x:Class="InventoriaMauiApp.View.ReservationDetailsPage"
              x:DataType="viewmodel:ReservationDetailsPageViewModel"
-             Title="Reservation Details"
+             Title="Reservation Detaljer"
              BackgroundColor="#f0f0f0">
 
     <ScrollView>
@@ -20,13 +20,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Start Date:" FontSize="16" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="0" Text="Start:" FontSize="16" FontAttributes="Bold" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Reservation.StartDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" />
 
-                <Label Grid.Row="1" Grid.Column="0" Text="End Date:" FontSize="16" FontAttributes="Bold" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Slut:" FontSize="16" FontAttributes="Bold" />
                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Reservation.EndDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" />
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Background:" FontSize="16" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Baggrund:" FontSize="16" FontAttributes="Bold" />
                 <Label Grid.Row="2" Grid.Column="1" Text="{Binding Reservation.Background}" FontSize="16" />
 
                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center">

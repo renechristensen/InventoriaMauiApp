@@ -9,7 +9,7 @@ namespace InventoriaMauiApp.Services
         public Task<ReservationDTO> GetReservationById(int reservationId);
         public Task<ReservationDTO> CreateReservation(CreateReservationDTO reservation);
         public Task<List<ReservationDTO>> GetReservationsByUser(int userId);
-
+        public Task<bool> DeleteReservation(int reservationId);
 
     }
 }

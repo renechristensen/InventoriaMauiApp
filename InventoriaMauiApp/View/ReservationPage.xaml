@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:Class="InventoriaMauiApp.View.ReservationPage"
              x:DataType="viewmodel:ReservationPageViewModel"
-             Title="Create Reservation">
+             Title="Opret Reservation">
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
@@ -19,16 +19,21 @@
                         TextColor="#333333" FontAttributes="Bold" />
 
             <Entry Text="{Binding Background}"
-                   Placeholder="Background information"
+                   Placeholder="Baggrunds information (obligatorisk)"
                    BackgroundColor="#ffffff" TextColor="#333333" />
 
-            <Button Text="Create Reservation"
-                    Command="{Binding CreateReservationCommand}"
-                    BackgroundColor="#4CAF50" TextColor="White" />
-
-            <Button Text="Back"
+            <Grid ColumnDefinitions="*, 30, *" HorizontalOptions="FillAndExpand">
+                <Button Margin="5,5" 
+                    Text="Tilbage"
                     Command="{Binding NavigateBackCommand}"
-                    BackgroundColor="#F44336" TextColor="White" />
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"/>
+                <Button Margin="5,5"  
+                    Text="Opret Reservation"
+                    Command="{Binding CreateReservationCommand}"
+                    Grid.Column="2"
+                    HorizontalOptions="FillAndExpand"/>
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

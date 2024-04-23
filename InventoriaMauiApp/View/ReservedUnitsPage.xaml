@@ -7,7 +7,7 @@
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
              x:Class="InventoriaMauiApp.View.ReservedUnitsPage"
              x:DataType="viewmodel:ReservedUnitsPageViewModel"
-             Title="Reserved Rack Units Overview"
+             Title="Oversigt Over Reserverede Units"
              BackgroundColor="#f0f0f0"
              x:Name="ThisPage">
 
@@ -36,19 +36,19 @@
                                 <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}"
                                        Grid.Row="0" Grid.Column="0"
                                        FontAttributes="Bold"/>
-                                <Label Text="{Binding EquipmentName, StringFormat='Equipment: {0}'}"
+                                <Label Text="{Binding EquipmentName, StringFormat='Udstyr Titel: {0}'}"
                                        Grid.Row="0" Grid.Column="1"
                                        FontAttributes="Bold"/>
-                                <Label Text="{Binding DisplayName, StringFormat='Reserved by: {0}'}"
+                                <Label Text="{Binding DisplayName, StringFormat='Reserveret Af: {0}'}"
                                        Grid.Row="1" Grid.Column="0"
                                        Grid.ColumnSpan="2"
                                        FontAttributes="Bold"/>
                                 <Label Text="{Binding StartDate, StringFormat='Start: {0}'}"
                                        Grid.Row="2" Grid.Column="0"/>
-                                <Label Text="{Binding EndDate, StringFormat='End: {0}'}"
+                                <Label Text="{Binding EndDate, StringFormat='Slut: {0}'}"
                                        Grid.Row="2" Grid.Column="1"/>
                                 <Button Grid.Row="3" Grid.Column="2"
-                                        Text="Details"
+                                        Text="Detaljer"
                                         Command="{Binding Path=BindingContext.ViewRackUnitDetailsCommand, Source={x:Reference ThisPage}}"
                                         CommandParameter="{Binding .}"
                                         HorizontalOptions="Start"/>
@@ -62,7 +62,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Insert Equipment"
+            <Button Text="Indsæt Udstyr"
                     Command="{Binding InsertEquipmentCommand}"
                     HorizontalOptions="FillAndExpand"/>
             <Button Text="Tilbage"

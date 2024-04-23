@@ -16,6 +16,15 @@ namespace InventoriaMauiApp.Services
             : base(httpClient, authorizationService)
         {
         }
+        public async Task<bool> DeleteReservation(int reservationId)
+        {
+            HttpResponseMessage response = await ExecuteHttpRequestAsync(() => _httpClient.DeleteAsync($"{ReservationEndpoint}{reservationId}"));
+
+            if (response.IsSuccessStatusCode)
+                return true;
+            else
+                throw new Exception($"Failed to delete reservation: {response.StatusCode}");
+        }
 
         public async Task<ReservationDTO> CreateReservation(CreateReservationDTO reservation)
         {
