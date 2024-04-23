@@ -11,7 +11,7 @@ namespace InventoriaMauiApp.View;
 
 public partial class ReservedUnitsPage : ContentPage
 {
-    public ReservedUnitsPage(ReservationRackUnitsViewModel viewModel)
+    public ReservedUnitsPage(ReservedUnitsPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
@@ -20,7 +20,7 @@ public partial class ReservedUnitsPage : ContentPage
     {
         if (sender is CheckBox checkBox && checkBox.BindingContext is RackUnitFlatDTO rackUnit)
         {
-            var viewModel = (ReservationRackUnitsViewModel)BindingContext;
+            var viewModel = (ReservedUnitsPageViewModel)BindingContext;
             viewModel.HandleCheckChanged(rackUnit, e.Value);
         }
     }

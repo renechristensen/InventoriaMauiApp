@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class ReservationRackUnitsViewModel : ViewModelBase
+    public partial class ReservedUnitsPageViewModel : ViewModelBase
     {
         private readonly IReservedRackUnitsService _reservedRackUnitsService;
         private readonly IReservationStateService _reservationStateService;
@@ -23,7 +23,7 @@ namespace InventoriaMauiApp.ViewModels
             set => Set(ref _rackUnits, value);
         }
 
-        public ReservationRackUnitsViewModel(IReservedRackUnitsService reservedRackUnitsService, IReservationStateService reservationStateService, IRackUnitStateService rackUnitStateService)
+        public ReservedUnitsPageViewModel(IReservedRackUnitsService reservedRackUnitsService, IReservationStateService reservationStateService, IRackUnitStateService rackUnitStateService)
         {
             _reservedRackUnitsService = reservedRackUnitsService;
             _reservationStateService = reservationStateService;

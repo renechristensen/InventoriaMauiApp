@@ -9,7 +9,7 @@ using InventoriaMauiApp.Models;
 
 public partial class DataRackUnitsPage : ContentPage
 {
-    public DataRackUnitsPage(DataRackUnitsViewModel viewModel)
+    public DataRackUnitsPage(DataRackUnitsPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
@@ -19,7 +19,7 @@ public partial class DataRackUnitsPage : ContentPage
     {
         if (sender is CheckBox checkBox && checkBox.BindingContext is RackUnitFlatDTO rackUnit)
         {
-            var viewModel = (DataRackUnitsViewModel)BindingContext;
+            var viewModel = (DataRackUnitsPageViewModel)BindingContext;
             viewModel.HandleCheckChanged(rackUnit, e.Value);
         }
     }

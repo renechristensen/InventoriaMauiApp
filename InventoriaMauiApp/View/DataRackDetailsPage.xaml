@@ -3,7 +3,7 @@
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:Class="InventoriaMauiApp.View.DataRackDetailsPage"
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
-             x:DataType="viewmodel:DataRackDetailsViewModel"
+             x:DataType="viewmodel:DataRackDetailsPageViewModel"
              Title="Data Rack Details"
              BackgroundColor="#f0f0f0">
     <ContentPage.Resources>

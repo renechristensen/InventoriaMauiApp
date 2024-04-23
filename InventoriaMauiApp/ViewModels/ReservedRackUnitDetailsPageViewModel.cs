@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public class ReservedRackUnitDetailsViewModel : ViewModelBase
+    public class ReservedRackUnitDetailsPageViewModel : ViewModelBase
     {
         private readonly IRackUnitStateService _rackUnitStateService;
         private readonly IEquipmentService _equipmentService;
@@ -14,7 +14,7 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand NavigateBackCommand { get; }
         public ICommand RemoveEquipmentCommand { get; }
 
-        public ReservedRackUnitDetailsViewModel(IRackUnitStateService rackUnitStateService, IEquipmentService equipmentService)
+        public ReservedRackUnitDetailsPageViewModel(IRackUnitStateService rackUnitStateService, IEquipmentService equipmentService)
         {
             _rackUnitStateService = rackUnitStateService;
             _equipmentService = equipmentService;

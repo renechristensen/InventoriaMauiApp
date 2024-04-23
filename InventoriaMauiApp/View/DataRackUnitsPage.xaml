@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
              x:Class="InventoriaMauiApp.View.DataRackUnitsPage"
-             x:DataType="viewmodel:DataRackUnitsViewModel"
+             x:DataType="viewmodel:DataRackUnitsPageViewModel"
              Title="Data Rack Units Overview"
              BackgroundColor="#f0f0f0"
              x:Name="ThisPage">

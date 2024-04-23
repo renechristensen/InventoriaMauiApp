@@ -8,13 +8,13 @@ using InventoriaMauiApp.View; // Ensure you have installed the CommunityToolkit.
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class DataRacksViewModel : ViewModelBase
+    public partial class DataRackOverViewPageViewModel : ViewModelBase
     {
         private ObservableCollection<DataRack> _dataRacks = new();
         private readonly IDataRackService _dataRackService;
         private readonly IDataRackStateService _dataRackStateService;
         public DataRack SelectedDataRack { get; set; }
-        public DataRacksViewModel(IDataRackService dataRackService, IDataRackStateService dataRackStateService)
+        public DataRackOverViewPageViewModel(IDataRackService dataRackService, IDataRackStateService dataRackStateService)
         {
             _dataRackService = dataRackService;
             _dataRackStateService = dataRackStateService;

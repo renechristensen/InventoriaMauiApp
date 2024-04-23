@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:Class="InventoriaMauiApp.View.ReservationPage"
-             x:DataType="viewmodel:ReservationViewModel"
+             x:DataType="viewmodel:ReservationPageViewModel"
              Title="Create Reservation">
 
     <ScrollView>

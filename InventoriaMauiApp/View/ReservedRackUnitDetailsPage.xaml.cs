@@ -11,7 +11,7 @@ namespace InventoriaMauiApp.View;
 
 public partial class ReservedRackUnitDetailsPage : ContentPage
 {
-    public ReservedRackUnitDetailsPage(ReservedRackUnitDetailsViewModel viewModel)
+    public ReservedRackUnitDetailsPage(ReservedRackUnitDetailsPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

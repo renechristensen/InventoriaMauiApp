@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
              x:Class="InventoriaMauiApp.View.ReservedUnitsPage"
-             x:DataType="viewmodel:ReservationRackUnitsViewModel"
+             x:DataType="viewmodel:ReservedUnitsPageViewModel"
              Title="Reserved Rack Units Overview"
              BackgroundColor="#f0f0f0"
              x:Name="ThisPage">

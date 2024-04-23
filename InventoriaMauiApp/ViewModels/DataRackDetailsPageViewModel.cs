@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class DataRackDetailsViewModel : ObservableObject
+    public partial class DataRackDetailsPageViewModel : ObservableObject
     {
         [ObservableProperty]
         private DataRack _dataRack;
@@ -16,7 +16,7 @@ namespace InventoriaMauiApp.ViewModels
 
         public ICommand NavigateBackCommand { get; }
         public ICommand OpenRackContentCommand { get; }
-        public DataRackDetailsViewModel(IDataRackStateService dataRackStateService)
+        public DataRackDetailsPageViewModel(IDataRackStateService dataRackStateService)
         {
             _dataRackStateService = dataRackStateService;
             DataRack = _dataRackStateService.CurrentDataRack;

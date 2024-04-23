@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public class EquipmentViewModel : ViewModelBase
+    public class InsertEquipmentPageViewModel : ViewModelBase
     {
         private string _name;
         private string _model;
@@ -19,7 +19,7 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand CreateEquipmentCommand { get; }
         public ICommand NavigateBackCommand { get; }
 
-        public EquipmentViewModel(IEquipmentService equipmentService, IReservationStateService reservationStateService)
+        public InsertEquipmentPageViewModel(IEquipmentService equipmentService, IReservationStateService reservationStateService)
         {
             _equipmentService = equipmentService;
             _reservationStateService = reservationStateService;

@@ -9,7 +9,7 @@ using InventoriaMauiApp.Models;
 
 public partial class DataRackOverViewPage : ContentPage
 {
-	public DataRackOverViewPage(DataRacksViewModel viewModel)
+	public DataRackOverViewPage(DataRackOverViewPageViewModel viewModel)
 	{
 		
 		InitializeComponent();

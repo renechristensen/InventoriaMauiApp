@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              xmlns:converters="clr-namespace:InventoriaMauiApp.Converters"
              x:Class="InventoriaMauiApp.View.ReservationDetailsPage"
-             x:DataType="viewmodel:ReservationDetailsViewModel"
+             x:DataType="viewmodel:ReservationDetailsPageViewModel"
              Title="Reservation Details"
              BackgroundColor="#f0f0f0">
 

@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using InventoriaMauiApp.Models;
 public partial class ReservationDetailsPage : ContentPage
 {
-    public ReservationDetailsPage(ReservationDetailsViewModel viewModel)
+    public ReservationDetailsPage(ReservationDetailsPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

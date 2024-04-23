@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public class ReservationViewModel : ViewModelBase
+    public class ReservationPageViewModel : ViewModelBase
     {
         private DateTime _startDate = DateTime.Now;
         private DateTime _endDate = DateTime.Now.AddDays(1);
@@ -19,7 +19,7 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand CreateReservationCommand { get; }
         public ICommand NavigateBackCommand { get; }
 
-        public ReservationViewModel(IReservationService reservationService, IRackUnitStateService rackUnitStateService, IUserStateService userStateService)
+        public ReservationPageViewModel(IReservationService reservationService, IRackUnitStateService rackUnitStateService, IUserStateService userStateService)
         {
             _reservationService = reservationService;
             _rackUnitStateService = rackUnitStateService;

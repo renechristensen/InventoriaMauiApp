@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class ReservationDetailsViewModel : ObservableObject
+    public partial class ReservationDetailsPageViewModel : ObservableObject
     {
         [ObservableProperty]
         private ReservationDTO _reservation;
@@ -16,7 +16,7 @@ namespace InventoriaMauiApp.ViewModels
 
         public ICommand NavigateBackCommand { get; }
         public ICommand OpenReservationContentCommand { get; }
-        public ReservationDetailsViewModel(IReservationStateService reservationStateService)
+        public ReservationDetailsPageViewModel(IReservationStateService reservationStateService)
         {
             _reservationStateService = reservationStateService;
             Reservation = _reservationStateService.CurrentReservationDTO;

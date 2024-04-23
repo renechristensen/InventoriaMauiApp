@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class ReservationOverviewViewModel : ViewModelBase
+    public partial class ReservationOverviewPageViewModel : ViewModelBase
     {
         private readonly IReservationService _reservationService;
         private readonly IUserStateService _userStateService;
@@ -21,7 +21,7 @@ namespace InventoriaMauiApp.ViewModels
         public ICommand LoadReservationsCommand { get; set; }
         public ICommand GoBackCommand { get; set; }
         public ICommand OpenReservationDetailsCommand { get; }
-        public ReservationOverviewViewModel(IReservationService reservationService, IUserStateService userStateService, IReservationStateService reservationStateService)
+        public ReservationOverviewPageViewModel(IReservationService reservationService, IUserStateService userStateService, IReservationStateService reservationStateService)
         {
             LoadReservationsCommand = new RelayCommand(Appearing);
             _reservationService = reservationService;

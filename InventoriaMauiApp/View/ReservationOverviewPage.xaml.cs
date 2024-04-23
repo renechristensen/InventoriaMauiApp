@@ -11,7 +11,7 @@ namespace InventoriaMauiApp.View;
 
 public partial class ReservationOverviewPage : ContentPage
 {
-    public ReservationOverviewPage(ReservationOverviewViewModel viewModel)
+    public ReservationOverviewPage(ReservationOverviewPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

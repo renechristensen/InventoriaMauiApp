@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
              x:Class="InventoriaMauiApp.View.ReservedRackUnitDetailsPage"
-             x:DataType="viewmodel:ReservedRackUnitDetailsViewModel"
+             x:DataType="viewmodel:ReservedRackUnitDetailsPageViewModel"
              Title="Reserved Rack Unit Details"
              BackgroundColor="#f0f0f0">
+
 
     <ScrollView>
         <Frame Padding="20" Margin="20" CornerRadius="0" BorderColor="#cccccc" BackgroundColor="#ffffff"

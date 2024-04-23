@@ -11,7 +11,7 @@ using Microsoft.Maui.Controls;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class DataRackUnitsViewModel : ViewModelBase
+    public partial class DataRackUnitsPageViewModel : ViewModelBase
     {
         private readonly IRackUnitService _rackUnitService;
         private readonly IDataRackStateService _dataRackStateService;
@@ -41,7 +41,7 @@ namespace InventoriaMauiApp.ViewModels
 
 
 
-        public DataRackUnitsViewModel(IRackUnitService rackUnitService, IDataRackStateService dataRackStateService, IRackUnitStateService rackUnitStateService)
+        public DataRackUnitsPageViewModel(IRackUnitService rackUnitService, IDataRackStateService dataRackStateService, IRackUnitStateService rackUnitStateService)
         {
             _rackUnitService = rackUnitService;
             _dataRackStateService = dataRackStateService;

@@ -6,7 +6,7 @@ using InventoriaMauiApp.Services;
 
 namespace InventoriaMauiApp.ViewModels
 {
-    public partial class RackUnitDetailsViewModel : ViewModelBase
+    public partial class RackUnitDetailsPageViewModel : ViewModelBase
     {
         private RackUnitFlatDTO _rackUnit;
         private IRackUnitStateService _rackUnitStateService;
@@ -18,7 +18,7 @@ namespace InventoriaMauiApp.ViewModels
             set => Set(ref _rackUnit, value);
         }
 
-        public RackUnitDetailsViewModel(IRackUnitStateService rackUnitStateService)
+        public RackUnitDetailsPageViewModel(IRackUnitStateService rackUnitStateService)
         {
             NavigateBackCommand = new Command(() => NavigateBackToDataRackOverview());
             _rackUnitStateService = rackUnitStateService;

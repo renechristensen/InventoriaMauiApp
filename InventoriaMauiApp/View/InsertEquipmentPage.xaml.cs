@@ -9,7 +9,7 @@ using InventoriaMauiApp.Models;
 
 public partial class InsertEquipmentPage : ContentPage
 {
-    public InsertEquipmentPage(EquipmentViewModel viewModel)
+    public InsertEquipmentPage(InsertEquipmentPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using InventoriaMauiApp.Models;
 public partial class DataRackDetailsPage : ContentPage
     {
-        public DataRackDetailsPage(DataRackDetailsViewModel viewModel)
+        public DataRackDetailsPage(DataRackDetailsPageViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = viewModel;
