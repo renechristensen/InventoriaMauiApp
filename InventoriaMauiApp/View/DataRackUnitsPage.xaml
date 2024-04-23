@@ -43,6 +43,7 @@
                                               IsVisible="{Binding ., Converter={StaticResource IsFreeConverterKey}}"
                                               VerticalOptions="Center"
                                               HorizontalOptions="Start"
+                                              CheckedChanged="OnCheckBoxCheckedChanged"
                                               Grid.Column="0"/>
                                     <Button Text="Detaljer"
                                             Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ViewRackUnitDetailsCommand}"

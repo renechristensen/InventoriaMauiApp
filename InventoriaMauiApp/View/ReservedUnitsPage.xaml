@@ -23,7 +23,7 @@
     </ContentPage.Behaviors>
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="20">
             <CollectionView ItemsSource="{Binding RackUnits}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:RackUnitFlatDTO">
@@ -31,43 +31,44 @@
                                BorderColor="Gray"
                                BackgroundColor="{Binding ., Converter={StaticResource StatusColorConverter}}"
                                HorizontalOptions="FillAndExpand">
-                            <Grid ColumnDefinitions="*, Auto, Auto"
-                                  RowDefinitions="Auto, Auto, Auto, Auto">
-                                <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}"
-                                       Grid.Row="0" Grid.Column="0"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding EquipmentName, StringFormat='Udstyr Titel: {0}'}"
-                                       Grid.Row="0" Grid.Column="1"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding DisplayName, StringFormat='Reserveret Af: {0}'}"
-                                       Grid.Row="1" Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding StartDate, StringFormat='Start: {0}'}"
-                                       Grid.Row="2" Grid.Column="0"/>
-                                <Label Text="{Binding EndDate, StringFormat='Slut: {0}'}"
-                                       Grid.Row="2" Grid.Column="1"/>
-                                <Button Grid.Row="3" Grid.Column="2"
-                                        Text="Detaljer"
-                                        Command="{Binding Path=BindingContext.ViewRackUnitDetailsCommand, Source={x:Reference ThisPage}}"
-                                        CommandParameter="{Binding .}"
-                                        HorizontalOptions="Start"/>
-                                <CheckBox 
-                                    IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                    IsVisible="{Binding ., Converter={StaticResource IsFreeOfEquipmentConverterKey}}"
-                                    CheckedChanged="OnReservedCheckBoxCheckedChanged"
-                                    HorizontalOptions="End"/>
-                            </Grid>
+                            <StackLayout>
+                                <Label Text="{Binding UnitNumber, StringFormat='Unit: {0}'}" FontAttributes="Bold" Margin="0,0,0,4"/>
+                                <Label Text="{Binding EquipmentName, StringFormat='Udstyr: {0}'}" FontAttributes="Bold" Margin="0,0,0,4"/>
+                                <Label Text="{Binding DisplayName, StringFormat='Reserveret af: {0}'}" FontAttributes="Bold" Margin="0,0,0,4"/>
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0}'}" Margin="0,0,0,4"/>
+                                <Label Text="{Binding EndDate, StringFormat='Slut: {0}'}" Margin="0,0,0,10"/>
+                                <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                    <CheckBox Margin="-10,0,0,0"
+                                              IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                              IsVisible="{Binding ., Converter={StaticResource IsFreeOfEquipmentConverterKey}}"
+                                              VerticalOptions="Center"
+                                              HorizontalOptions="Start"
+                                              CheckedChanged="OnReservedCheckBoxCheckedChanged"
+                                              Grid.Column="0"/>
+                                    <Button Text="Detaljer"
+                                            Command="{Binding Path=BindingContext.ViewRackUnitDetailsCommand, Source={x:Reference ThisPage}}"
+                                            CommandParameter="{Binding .}"
+                                            Grid.Column="1"
+                                            HorizontalOptions="End"/>
+                                </Grid>
+                            </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Indsæt Udstyr"
-                    Command="{Binding InsertEquipmentCommand}"
-                    HorizontalOptions="FillAndExpand"/>
-            <Button Text="Tilbage"
-                    Command="{Binding NavigateBackCommand}"
-                    HorizontalOptions="FillAndExpand"/>
+            <Grid ColumnDefinitions="*, 30, *" HorizontalOptions="FillAndExpand">
+                <Button Margin="5,5" 
+                        Text="Tilbage"
+                        Command="{Binding NavigateBackCommand}"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Margin="5,5"  
+                        Text="Reserver"
+                        Command="{Binding InsertEquipmentCommand}"
+                        Grid.Column="2"
+                        HorizontalOptions="FillAndExpand"/>
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>
+
