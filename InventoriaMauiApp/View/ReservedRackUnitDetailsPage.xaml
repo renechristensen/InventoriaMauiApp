@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:InventoriaMauiApp.ViewModels"
+             x:Class="InventoriaMauiApp.View.ReservedRackUnitDetailsPage"
+             x:DataType="viewmodel:ReservedRackUnitDetailsViewModel"
+             Title="Reserved Rack Unit Details"
+             BackgroundColor="#f0f0f0">
+
+    <ScrollView>
+        <Frame Padding="20" Margin="20" CornerRadius="0" BorderColor="#cccccc" BackgroundColor="#ffffff"
+               HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <VerticalStackLayout Spacing="10">
+                <Grid ColumnDefinitions="Auto, *">
+                    <!-- Define the rows for the grid -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Unit Number:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding RackUnit.UnitNumber}" FontSize="16" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Equipment Name:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding RackUnit.EquipmentName}" FontSize="16" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Model:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding RackUnit.EquipmentModel}" FontSize="16" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Type:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding RackUnit.EquipmentType}" FontSize="16" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Reservation Status:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding RackUnit.ReservationBackground}" FontSize="16" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Reserved By:" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding RackUnit.DisplayName}" FontSize="16" />
+                </Grid>
+                <!-- Button row outside the grid within the VerticalStackLayout -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="10">
+                    <Button Text="Back" Command="{Binding NavigateBackCommand}" Margin="10" />
+                    <Button Text="Fjern Udstyr" Command="{Binding RemoveEquipmentCommand}" Margin="10" />
+                </StackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

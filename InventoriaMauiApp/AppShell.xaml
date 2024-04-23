@@ -84,6 +84,13 @@
             ContentTemplate="{DataTemplate local:InsertEquipmentPage}"
             Route="InsertEquipmentPage" />
         </Tab>
+        <Tab Title="Detaljer">
+            <ShellContent
+            Title="Detaljer"
+            IsVisible="False"
+            ContentTemplate="{DataTemplate local:ReservedRackUnitDetailsPage}"
+            Route="ReservedRackUnitDetailsPage" />
+        </Tab>
     </TabBar>
 
 </Shell>

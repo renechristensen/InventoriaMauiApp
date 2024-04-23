@@ -82,7 +82,7 @@ namespace InventoriaMauiApp.ViewModels
             if (rackUnit != null)
             {
                 _rackUnitStateService.CurrentRackUnit = rackUnit;
-                await Shell.Current.GoToAsync($"RackUnitDetailsPage");
+                await Shell.Current.GoToAsync($"ReservedRackUnitDetailsPage");
             }
         }
     }

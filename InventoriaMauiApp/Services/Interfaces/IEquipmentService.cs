@@ -9,5 +9,6 @@ namespace InventoriaMauiApp.Services
         Task<EquipmentDTO> CreateEquipment(CreateEquipmentDTO equipment);
         Task<bool> UpdateEquipment(int equipmentId, UpdateEquipmentDTO equipment);
         Task<bool> DeleteEquipment(int equipmentId);
+        public Task<bool> DeleteEquipmentByRackUnitId(int rackUnitId);
     }
 }

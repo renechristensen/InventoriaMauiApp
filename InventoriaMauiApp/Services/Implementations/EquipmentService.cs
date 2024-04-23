@@ -66,5 +66,13 @@ namespace InventoriaMauiApp.Services
 
             return response.IsSuccessStatusCode;
         }
+
+        // New method to delete equipment by RackUnitID
+        public async Task<bool> DeleteEquipmentByRackUnitId(int rackUnitId)
+        {
+            HttpResponseMessage response = await ExecuteHttpRequestAsync(() => _httpClient.DeleteAsync($"{EquipmentEndpoint}ByRackUnit/{rackUnitId}"));
+
+            return response.IsSuccessStatusCode;
+        }
     }
 }
