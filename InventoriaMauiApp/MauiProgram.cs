@@ -11,7 +11,7 @@ namespace InventoriaMauiApp
     public static class MauiProgram
     {
         // ngrok url, remember to replace it with new ones
-        public static string baseUrl = "https://5953-91-101-203-112.ngrok-free.app";
+        public static string baseUrl = "https://outgoing-eminent-jennet.ngrok-free.app";
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
