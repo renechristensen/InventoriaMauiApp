@@ -38,7 +38,7 @@ namespace InventoriaMauiApp
         {
             services.AddSingleton<IAuthorizationService, AuthorizationService>();
 
-            // individual state services, refactor this for a single state service
+            // individual state services, refactor this for a single state service in the next version
             services.AddSingleton<IDataRackStateService, DataRackStateService>();
             services.AddSingleton<IRackUnitStateService, RackUnitStateService>();
             services.AddSingleton<IUserStateService, UserStateService>();

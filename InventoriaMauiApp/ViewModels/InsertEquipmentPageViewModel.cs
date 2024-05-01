@@ -55,7 +55,7 @@ namespace InventoriaMauiApp.ViewModels
                 Type = Type,
                 RackUnitIDs = new List<int>(_reservationStateService.SelectedRackUnitIds)
             };
-
+            _reservationStateService.SelectedRackUnitIds.Clear();
             try
             {
                 var equipment = await _equipmentService.CreateEquipment(createEquipmentDTO);
